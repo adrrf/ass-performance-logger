@@ -1,3 +1,5 @@
+import Page from "./BasicPage";
+
 export default function Dashboard() {
-  return <span>dashboard</span>;
+  return <Page name="Dashboard"></Page>;
 }

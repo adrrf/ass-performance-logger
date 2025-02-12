@@ -1,3 +1,5 @@
+import Page from "./BasicPage";
+
 export default function Data() {
-  return <span>data</span>;
+  return <Page name="Upload data"></Page>;
 }

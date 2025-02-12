@@ -1,3 +1,5 @@
+import Page from "./BasicPage";
+
 export default function Docs() {
-  return <span>docs</span>;
+  return <Page name="Documentation"></Page>;
 }
