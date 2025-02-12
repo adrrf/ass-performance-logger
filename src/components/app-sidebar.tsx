@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BookOpen, Home, Snail, SquareTerminal, Upload } from "lucide-react";
+import { BookOpen, Home, Rocket, SquareTerminal, Upload } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { TeamSwitcher } from "@/components/team-switcher";
@@ -9,7 +9,7 @@ const data = {
   teams: [
     {
       name: "Performance Logger",
-      logo: Snail,
+      logo: Rocket,
       plan: "ASS 2025",
     },
   ],
