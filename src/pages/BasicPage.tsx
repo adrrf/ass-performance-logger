@@ -1,9 +1,9 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { BreadcrumbItem } from "@/components/ui/breadcrumb";
-import { Outlet } from "react-router";
+import { ReactNode } from "react";
 
-export default function Page(props: { name: string }) {
+export default function Page(props: { name: string; children: ReactNode }) {
   return (
     <div>
       <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -21,7 +21,7 @@ export default function Page(props: { name: string }) {
           )}
         </div>
       </header>
-      <Outlet />
+      {props.children}
     </div>
   );
 }

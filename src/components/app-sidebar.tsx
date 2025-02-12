@@ -8,9 +8,9 @@ import { Sidebar, SidebarContent, SidebarHeader, SidebarRail } from "@/component
 const data = {
   teams: [
     {
-      name: "Performance Logger",
+      name: "ASS Performance Logger",
       logo: Rocket,
-      plan: "ASS 2025",
+      plan: "2025",
     },
   ],
   navMain: [
