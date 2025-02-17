@@ -6,7 +6,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface EndpointSelectProps {
-  options: string[];
+  options: { section: string; items: string[] }[];
   selected: string;
   onChange: (selected: string) => void;
   placeholder?: string;
@@ -24,29 +24,31 @@ export function EndpointSelect({ options, selected, onChange, placeholder, class
           aria-expanded={open}
           className={cn("w-full justify-between", className)}
         >
-          {selected || placeholder || "Select endpoint..."}
+          {selected || placeholder || "Select scope..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full p-0">
         <Command>
-          <CommandInput placeholder="Search endpoints..." />
+          <CommandInput placeholder="Search scope..." />
           <CommandList>
             <CommandEmpty>No endpoint found.</CommandEmpty>
-            <CommandGroup>
-              {options.map((option) => (
-                <CommandItem
-                  key={option}
-                  onSelect={() => {
-                    onChange(option === selected ? "" : option);
-                    setOpen(false);
-                  }}
-                >
-                  <Check className={cn("mr-2 h-4 w-4", selected === option ? "opacity-100" : "opacity-0")} />
-                  {option}
-                </CommandItem>
-              ))}
-            </CommandGroup>
+            {options.map((section) => (
+              <CommandGroup key={section.section} heading={section.section}>
+                {section.items.map((option) => (
+                  <CommandItem
+                    key={option}
+                    onSelect={() => {
+                      onChange(option === selected ? "" : option);
+                      setOpen(false);
+                    }}
+                  >
+                    <Check className={cn("mr-2 h-4 w-4", selected === option ? "opacity-100" : "opacity-0")} />
+                    {option}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            ))}
           </CommandList>
         </Command>
       </PopoverContent>

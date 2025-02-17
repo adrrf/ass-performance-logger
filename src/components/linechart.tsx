@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-
-const chartData = [
-  { name: "baseline", mongo: 186, mariadb: 190, atlas: 345 },
-  { name: "some changes", mongo: 174, mariadb: 183, atlas: 300 },
-  { name: "some x2", mongo: 104, mariadb: 113, atlas: 250 },
-];
+import { getRecordsByScope } from "@/api/db";
 
 const chartConfig = {
   mongo: {
@@ -23,28 +18,37 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-function getChartData(database: string, microservice: string, endpoint: string) {
-  switch (database) {
-    case "Global":
-      return chartData;
-    case "MongoDB":
-      return chartData.map((d) => ({ name: d.name, mongo: d.mongo }));
-    case "MariaDB":
-      return chartData.map((d) => ({ name: d.name, mariadb: d.mariadb }));
-    case "Atlas":
-      return chartData.map((d) => ({ name: d.name, atlas: d.atlas }));
-    default:
-      return chartData;
-  }
+interface ChartDataPoint {
+  name: string;
+  scope: string;
+  mongo?: number;
+  mariadb?: number;
+  atlas?: number;
 }
 
-export function TimeChart(props: { database: string; microservice: string; endpoint: string }) {
-  const [chartData, setChartData] = useState(getChartData(props.database, props.microservice, props.endpoint));
+export function TimeChart(props: { database: string; scope: string }) {
+  const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
 
   useEffect(() => {
-    const data = getChartData(props.database, props.microservice, props.endpoint);
-    setChartData(data);
-  }, [props.database, props.microservice, props.endpoint]);
+    async function fetchChartData(database: string, scope: string) {
+      const records = await getRecordsByScope(scope);
+      switch (database) {
+        case "MongoDB":
+          setChartData(records.map((d) => ({ name: d.name, mongo: d.mongo })));
+          break;
+        case "MariaDB":
+          setChartData(records.map((d) => ({ name: d.name, mariadb: d.mariadb })));
+          break;
+        case "Atlas":
+          setChartData(records.map((d) => ({ name: d.name, atlas: d.atlas })));
+          break;
+        case "Global":
+          setChartData(records);
+          break;
+      }
+    }
+    fetchChartData(props.database, props.scope);
+  }, [props.database, props.scope]);
 
   return (
     <ChartContainer config={chartConfig} className="p-4">
