@@ -14,10 +14,9 @@ export function ResetButton() {
       await deleteRecords();
       toast({
         title: "Success",
-        description: "All records have been deleted.",
+        description: "All records have been deleted. Please refresh the page.",
         variant: "default",
       });
-      window.location.reload();
     } catch (error) {
       console.log(error);
       toast({
