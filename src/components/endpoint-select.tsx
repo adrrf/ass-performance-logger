@@ -6,7 +6,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface EndpointSelectProps {
-  options: { section: string; items: string[] }[];
+  options: { services: string[]; endpoints: string[] }[];
   selected: string;
   onChange: (selected: string) => void;
   placeholder?: string;
@@ -33,22 +33,34 @@ export function EndpointSelect({ options, selected, onChange, placeholder, class
           <CommandInput placeholder="Search scope..." />
           <CommandList>
             <CommandEmpty>No endpoint found.</CommandEmpty>
-            {options.map((section) => (
-              <CommandGroup key={section.section} heading={section.section}>
-                {section.items.map((option) => (
-                  <CommandItem
-                    key={option}
-                    onSelect={() => {
-                      onChange(option === selected ? "" : option);
-                      setOpen(false);
-                    }}
-                  >
-                    <Check className={cn("mr-2 h-4 w-4", selected === option ? "opacity-100" : "opacity-0")} />
-                    {option}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            ))}
+            <CommandGroup key={options.services.join(",")} heading="Services">
+              {options.services.map((service) => (
+                <CommandItem
+                  key={service}
+                  onSelect={() => {
+                    onChange(service === selected ? "" : service);
+                    setOpen(false);
+                  }}
+                >
+                  <Check className={cn("mr-2 h-4 w-4", selected === service ? "opacity-100" : "opacity-0")} />
+                  {service}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+            <CommandGroup key={options.endpoints.join(",")} heading="Endpoints">
+              {options.endpoints.map((endpoint) => (
+                <CommandItem
+                  key={endpoint}
+                  onSelect={() => {
+                    onChange(endpoint === selected ? "" : endpoint);
+                    setOpen(false);
+                  }}
+                >
+                  <Check className={cn("mr-2 h-4 w-4", selected === endpoint ? "opacity-100" : "opacity-0")} />
+                  {endpoint}
+                </CommandItem>
+              ))}
+            </CommandGroup>
           </CommandList>
         </Command>
       </PopoverContent>

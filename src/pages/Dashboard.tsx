@@ -1,34 +1,26 @@
 import Page from "./BasicPage";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EndpointSelect } from "@/components/endpoint-select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TimeChart } from "@/components/linechart";
 import { ResetButton } from "@/components/reset-button";
+import { getScopes } from "@/api/db";
 
 const databases = ["Global", "MongoDB", "MariaDB", "Atlas"];
-const scopes = [
-  {
-    section: "Services",
-    items: ["Global", "Orders", "Restaurants", "Users", "Auth"],
-  },
-  {
-    section: "Endpoints",
-    items: [
-      "/api/orders",
-      "/api/orders/{id}",
-      "/api/restaurants",
-      "/api/restaurants/{id}",
-      "/api/users",
-      "/api/users/{id}",
-      "/api/auth/login",
-      "/api/auth/register",
-    ],
-  },
-];
 
 export default function Dashboard() {
+  const [scopes, setScopes] = useState<{ services: string[]; endpoints: string[] }>({ services: [], endpoints: [] });
   const [selectedDatabase, setSelectedDatabase] = useState("Global");
-  const [selectedScope, setSelectedScope] = useState<string>("Global");
+  const [selectedScope, setSelectedScope] = useState<string>("global");
+
+  useEffect(() => {
+    const fetchScopes = async () => {
+      const scopes = await getScopes();
+      console.log(scopes);
+      setScopes(scopes);
+    };
+    fetchScopes();
+  }, []);
 
   return (
     <Page name="Dashboard">
@@ -55,6 +47,8 @@ export default function Dashboard() {
             placeholder="Select endpoint"
             className="w-[250px]"
           />
+
+          <ResetButton />
         </div>
         <div className="flex flex-1 flex-col gap-4 pt-0">
           <div className="min-h-[10vh] flex-1 rounded-xl bg-muted/50">

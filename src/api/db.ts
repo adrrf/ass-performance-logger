@@ -115,3 +115,18 @@ export const getRecordsByScope = async (scope: string): Promise<Record[]> => {
     request.onerror = () => reject(request.error);
   });
 };
+
+export const getScopes = async (): Promise<{ services: string[]; endpoints: string[] }> => {
+  const records = await getRecords();
+  const allScopes = Array.from(new Set(records.map((record) => record.scope)));
+
+  const services = allScopes.filter((scope) => !scope.includes("-"));
+  const endpoints = allScopes.filter((scope) => scope.includes("-"));
+
+  const scopes = {
+    services: services,
+    endpoints: endpoints,
+  };
+
+  return scopes;
+};

@@ -78,7 +78,32 @@ export default function Docs() {
                 <CardContent className="space-y-6">
                   <section>
                     <h3 className="text-lg font-semibold mb-2">CSV Format</h3>
-                    <p className="text-muted-foreground mb-4 font-bold">Currently in development 👷🏽‍♂️</p>
+                    <p className="text-muted-foreground">
+                      The CSV file should have the following columns: "scope", "mongodb", "mongodb-atlas", "mariadb".
+                      You can use this{" "}
+                      <a
+                        href="https://gist.github.com/adrrf/9aa5754e7c9100d4d15dc72061dc0749"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        script
+                      </a>{" "}
+                      to generate a sample CSV file. If implemented correctly, the script will generate a CSV file with
+                      the specified columns when running <code>npm run test:report</code>. You will need to delete all
+                      records from performance logs before running the script.
+                    </p>
+                    <section className="mt-6">
+                      <h3 className="text-lg font-semibold mb-2">Upload Instructions</h3>
+                      <ol className="list-decimal pl-6 text-muted-foreground space-y-2">
+                        <li>Ensure your CSV file follows the format above</li>
+                        <li>Click the "Select File" button on the upload page</li>
+                        <li>Select your CSV file from your computer</li>
+                        <li>Add a commit message describing the changes (10 characters recommended)</li>
+                        <li>Click "Upload" to process the data</li>
+                        <li>Verify the data appears in the dashboard</li>
+                      </ol>
+                    </section>
                   </section>
                 </CardContent>
               </Card>
