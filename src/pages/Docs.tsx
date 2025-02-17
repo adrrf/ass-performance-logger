@@ -11,11 +11,12 @@ export default function Docs() {
           <h1 className="text-3xl font-bold mb-6">Documentation</h1>
 
           <Tabs defaultValue="getting-started" className="mb-8">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="getting-started">Getting Started</TabsTrigger>
               <TabsTrigger value="upload">Data Upload</TabsTrigger>
               <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
               <TabsTrigger value="api">API Reference</TabsTrigger>
+              <TabsTrigger value="contributing">Contributing</TabsTrigger>
             </TabsList>
 
             {/* Getting Started Section */}
@@ -178,6 +179,50 @@ export default function Docs() {
                       <li>Version: 1</li>
                       <li>Auto-incrementing index field</li>
                     </ul>
+                  </section>
+                </CardContent>
+              </Card>
+            </TabsContent>
+            <TabsContent value="contributing">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Contributing to ASS Performance Logger</CardTitle>
+                  <CardDescription>Learn how to contribute to the project</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">GitHub Repository</h3>
+                    <p className="text-muted-foreground mb-4">
+                      The project is open source and available on GitHub at:{" "}
+                      <a
+                        href="https://github.com/adrrf/ass-performance-logger"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        github.com/adrrf/ass-performance-logger
+                      </a>
+                    </p>
+                  </section>
+
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">How to Contribute</h3>
+                    <ol className="list-decimal pl-6 text-muted-foreground space-y-2">
+                      <li>Fork the repository</li>
+                      <li>Create a new branch for your feature</li>
+                      <li>Make your changes</li>
+                      <li>Submit a pull request</li>
+                    </ol>
+                  </section>
+
+                  <section>
+                    <h3 className="text-lg font-semibold mb-2">Development Setup</h3>
+                    <pre className="bg-muted p-4 rounded-lg text-sm">
+                      {`git clone https://github.com/adrrf/ass-performance-logger.git
+cd ass-performance-logger
+npm install
+npm run dev`}
+                    </pre>
                   </section>
                 </CardContent>
               </Card>

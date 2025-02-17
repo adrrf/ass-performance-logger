@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Page from "./BasicPage";
 import { useNavigate } from "react-router-dom";
-import { BarChart3, Upload, BookOpen, ArrowRight } from "lucide-react";
+import { BarChart3, Upload, BookOpen, ArrowRight, Github } from "lucide-react";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function Landing() {
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             ASS Performance Logger
           </h1>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
@@ -36,6 +36,18 @@ export default function Landing() {
               Read Documentation
             </Button>
           </div>
+        </div>
+
+        <div className="text-center mb-8">
+          <a
+            href="https://github.com/adrrf/ass-performance-logger"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted-foreground hover:text-foreground flex items-center justify-center gap-2"
+          >
+            <Github className="h-4 w-4" />
+            View on GitHub
+          </a>
         </div>
 
         {/* Features Section */}
