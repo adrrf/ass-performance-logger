@@ -16,24 +16,24 @@ const data = {
   navMain: [
     {
       title: "Home",
-      url: "/",
+      url: "/ass-performance-logger/",
       icon: Home,
       isActive: true,
     },
     {
       title: "Dashboard",
-      url: "/dashboard",
+      url: "/ass-performance-logger/dashboard",
       icon: SquareTerminal,
       isActive: true,
     },
     {
       title: "Upload data",
-      url: "/data",
+      url: "/ass-performance-logger/data",
       icon: Upload,
     },
     {
       title: "Documentation",
-      url: "/docs",
+      url: "/ass-performance-logger/docs",
       icon: BookOpen,
     },
   ],

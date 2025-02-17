@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/ass-performance-logger/" element={<MainLayout />}>
           <Route index element={<Landing />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="data" element={<Data />} />
