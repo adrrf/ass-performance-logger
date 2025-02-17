@@ -23,7 +23,7 @@ export default function Landing() {
             <Button
               size="lg"
               onClick={() => navigate("/ass-performance-logger/dashboard")}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              className="bg-gradient-to-r text-white from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
             >
               View Dashboard <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
