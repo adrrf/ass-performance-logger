@@ -79,8 +79,8 @@ export default function Docs() {
                   <section>
                     <h3 className="text-lg font-semibold mb-2">CSV Format</h3>
                     <p className="text-muted-foreground">
-                      The CSV file should have the following columns: "scope", "mongodb", "mongodb-atlas", "mariadb".
-                      You can use this{" "}
+                      The CSV file should have the following columns: "scope", "mongodb+srv", "mongodb", "mariadb". You
+                      can use this{" "}
                       <a
                         href="https://gist.github.com/adrrf/9aa5754e7c9100d4d15dc72061dc0749"
                         target="_blank"

@@ -9,8 +9,8 @@ export default function Data() {
     for (const row of records) {
       if (row[0] === "scope") continue;
       const scope = row[0];
-      const mongodb = row[1];
-      const mongodbatlas = row[2];
+      const mongodbatlas = row[1];
+      const mongodb = row[2];
       const mariadb = row[3];
 
       const record = {
