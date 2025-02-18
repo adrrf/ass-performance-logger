@@ -16,7 +16,6 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchScopes = async () => {
       const scopes = await getScopes();
-      console.log(scopes);
       setScopes(scopes);
     };
     fetchScopes();
